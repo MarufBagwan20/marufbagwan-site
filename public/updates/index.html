@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Updates · Maruf Bagwan</title>
+<meta name="description" content="Latest updates from Mohammed Maruf Bagwan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site-header">
+    <a class="brand" href="/">Maruf Bagwan<span class="dot">.</span></a>
+    <nav aria-label="Main">
+      <ul class="tabs">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://salesforce.marufbagwan.com/">Salesforce</a></li>
+        <li><a href="/updates/" aria-current="page">Updates</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-head">
+      <p class="eyebrow">Updates</p>
+      <h1>Latest updates</h1>
+      <p class="lede">What I'm working on, learning and publishing, newest first.</p>
+    </div>
+
+    <section>
+      <div class="toolbar">
+        <div class="chips" id="chips" role="group" aria-label="Filter updates"></div>
+      </div>
+      <ul class="feed" id="feed"></ul>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <span>© 2026 Mohammed Maruf Bagwan · Dubai, UAE</span>
+    <a href="https://salesforce.marufbagwan.com/">salesforce.marufbagwan.com</a>
+  </footer>
+</div>
+
+<script src="../assets/updates.js"></script>
+<script src="../assets/site.js" data-root="../" data-site="main"></script>
+<script>
+  (function () {
+    var data = window.UPDATES || [];
+    var types = ["All"].concat(data.map(function (u) { return u.type; }).filter(function (t, i, a) { return a.indexOf(t) === i; }));
+    var current = "All";
+    var chips = document.getElementById("chips"), feed = document.getElementById("feed");
+    function render() {
+      chips.innerHTML = types.map(function (t) {
+        var n = t === "All" ? data.length : data.filter(function (u) { return u.type === t; }).length;
+        return '<button class="chip" type="button" data-t="' + MB.esc(t) + '" aria-pressed="' + (t === current) + '">' + MB.esc(t) + '<span class="n">' + n + '</span></button>';
+      }).join("");
+      var items = data.filter(function (u) { return current === "All" || u.type === current; });
+      feed.innerHTML = items.length ? items.map(function (u) {
+        var t = u.link ? '<a href="' + MB.esc(u.link) + '">' + MB.esc(u.title) + '</a>' : MB.esc(u.title);
+        return '<li><span class="date">' + MB.fmtDate(u.date) + '</span><div><h3>' + t + '</h3><p>' + MB.esc(u.text) +
+          '</p><div class="meta"><span class="tag">' + MB.esc(u.type) + '</span></div></div></li>';
+      }).join("") : '<li><p class="empty">Nothing here yet.</p></li>';
+      MB.fixLinks(feed);
+    }
+    chips.addEventListener("click", function (e) {
+      var b = e.target.closest("[data-t]"); if (!b) return;
+      current = b.getAttribute("data-t"); render();
+    });
+    render();
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Salesforce Hub · Maruf Bagwan</title>
+<meta name="description" content="Salesforce practice quiz, release highlights and news, curated by Maruf Bagwan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="sf">
+<div class="wrap">
+  <header class="site-header">
+    <a class="brand" href="https://salesforce.marufbagwan.com/">Maruf Bagwan<span class="dot">.</span> <span class="sub">salesforce</span></a>
+    <nav aria-label="Salesforce hub">
+      <ul class="tabs">
+        <li><a href="https://salesforce.marufbagwan.com/" aria-current="page">Hub</a></li>
+        <li><a href="https://salesforce.marufbagwan.com/quiz/">Quiz</a></li>
+        <li><a href="https://salesforce.marufbagwan.com/releases/">Releases</a></li>
+        <li><a href="https://salesforce.marufbagwan.com/news/">News</a></li>
+        <li><a class="out" href="https://marufbagwan.com/">Main site</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-head">
+      <p class="eyebrow">salesforce.marufbagwan.com</p>
+      <h1>A practitioner's corner of the Salesforce world.</h1>
+      <p class="lede">Test yourself with a practice quiz, catch up on what's new in each release and follow the news that matters for architects, developers and admins.</p>
+    </div>
+
+    <section>
+      <div class="cards">
+        <a class="card" href="https://salesforce.marufbagwan.com/quiz/">
+          <span class="k">/quiz</span>
+          <h3>Practice quiz</h3>
+          <p id="quizBlurb">Questions on Apex, LWC, integration, security, architecture and OmniStudio.</p>
+          <span class="go">Start quiz →</span>
+        </a>
+        <a class="card" href="https://salesforce.marufbagwan.com/releases/">
+          <span class="k">/releases</span>
+          <h3>Release notes</h3>
+          <p>The Winter '27 features worth knowing, with key dates and filters by area.</p>
+          <span class="go">See highlights →</span>
+        </a>
+        <a class="card" href="https://salesforce.marufbagwan.com/news/">
+          <span class="k">/news</span>
+          <h3>Latest news</h3>
+          <p>Product, AI and platform news from across the Salesforce ecosystem.</p>
+          <span class="go">Read news →</span>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><p class="eyebrow" id="relTitle">Release at a glance</p><a href="https://salesforce.marufbagwan.com/releases/">All highlights →</a></div>
+      <ol class="dates" id="dates"></ol>
+      <ul class="rel" id="picks" style="margin-top:18px"></ul>
+    </section>
+
+    <section>
+      <div class="sec-head"><p class="eyebrow">Latest news</p><a href="https://salesforce.marufbagwan.com/news/">All news →</a></div>
+      <ul class="feed" id="news"></ul>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <span>Curated by <a href="https://marufbagwan.com/">Mohammed Maruf Bagwan</a> · Not affiliated with Salesforce, Inc.</span>
+    <a href="https://marufbagwan.com/about/">About me</a>
+  </footer>
+</div>
+
+<script src="assets/quiz.js"></script>
+<script src="assets/releases.js"></script>
+<script src="assets/news.js"></script>
+<script src="assets/site.js" data-root="../" data-site="sf"></script>
+<script src="assets/hub.js"></script>
+<script>
+  (function () {
+    document.getElementById("quizBlurb").textContent =
+      window.QUIZ.length + " questions on Apex, LWC, integration, security, architecture and OmniStudio.";
+
+    var rel = window.RELEASES[0];
+    document.getElementById("relTitle").textContent = rel.name + " at a glance";
+    HUB.renderDates(document.getElementById("dates"), rel.dates);
+    var picks = ["Higher Apex heap limits", "Compare field values in SOQL with FORMULA()", "Flow Test Mode"];
+    var list = document.getElementById("picks");
+    list.innerHTML = rel.features.filter(function (f) { return picks.indexOf(f.title) > -1; }).map(HUB.featureRow).join("");
+
+    var news = document.getElementById("news");
+    news.innerHTML = window.NEWS.slice(0, 4).map(HUB.newsRow).join("");
+  })();
+</script>
+</body>
+</html>

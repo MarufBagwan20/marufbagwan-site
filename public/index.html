@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maruf Bagwan</title>
+<meta name="description" content="Mohammed Maruf Bagwan — Salesforce Technical Lead and Solution Architect in Dubai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site-header">
+    <a class="brand" href="/">Maruf Bagwan<span class="dot">.</span></a>
+    <nav aria-label="Main">
+      <ul class="tabs">
+        <li><a href="/" aria-current="page">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://salesforce.marufbagwan.com/">Salesforce</a></li>
+        <li><a href="/updates/">Updates</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-head">
+      <span class="status">Working toward Certified Technical Architect</span>
+      <h1>I design and lead Salesforce solutions that hold up at scale.</h1>
+      <p class="lede">I'm <strong>Mohammed Maruf Bagwan</strong>, a Salesforce Technical Lead and Solution Architect at PwC Middle East in Dubai. I help organisations get more from Salesforce through sound architecture, clean integrations and well-led delivery teams.</p>
+      <ul class="facts">
+        <li><b>11+</b> years on Salesforce</li>
+        <li><b>14</b> certifications</li>
+        <li>Dubai, UAE</li>
+      </ul>
+      <div class="actions">
+        <a class="btn primary" href="/about/">Read my full story</a>
+        <a class="btn" href="https://salesforce.marufbagwan.com/">Visit the Salesforce hub</a>
+      </div>
+    </div>
+
+    <section>
+      <div class="sec-head"><p class="eyebrow">What I do</p></div>
+      <div class="grid2">
+        <div>
+          <h3>Solution architecture</h3>
+          <p>Designing scalable, reusable Salesforce solutions across Lightning Web Components, OmniStudio and custom Apex.</p>
+        </div>
+        <div>
+          <h3>Enterprise integration</h3>
+          <p>Connecting Salesforce with SAP, MuleSoft and external APIs over REST and SOAP, so data moves reliably between systems.</p>
+        </div>
+        <div>
+          <h3>Service &amp; customer experience</h3>
+          <p>Service Cloud, Omni-Channel routing, Experience Cloud portals and AI chatbots that make support teams faster.</p>
+        </div>
+        <div>
+          <h3>Team leadership</h3>
+          <p>Leading developers, setting code standards and technical roadmaps, and mentoring engineers as they grow.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><p class="eyebrow">Explore</p></div>
+      <div class="cards">
+        <a class="card" href="/about/">
+          <span class="k">/about</span>
+          <h3>About me</h3>
+          <p>My career in detail, from Pune to Dubai, plus skills, certifications and education.</p>
+          <span class="go">Open →</span>
+        </a>
+        <a class="card" href="https://salesforce.marufbagwan.com/">
+          <span class="k">salesforce.</span>
+          <h3>Salesforce hub</h3>
+          <p>Practice quiz, release highlights and a curated news feed for the Salesforce community.</p>
+          <span class="go">Open →</span>
+        </a>
+        <a class="card" href="/updates/">
+          <span class="k">/updates</span>
+          <h3>Latest updates</h3>
+          <p>What I'm working on, learning and publishing.</p>
+          <span class="go">Open →</span>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><p class="eyebrow">Latest updates</p><a href="/updates/">All updates →</a></div>
+      <ul class="feed" id="latest"></ul>
+    </section>
+
+    <section id="contact">
+      <div class="sec-head"><p class="eyebrow">Get in touch</p></div>
+      <p class="prose" style="margin-bottom:18px">Open to conversations about Salesforce architecture, technical leadership and consulting work in the UAE.</p>
+      <div class="contact-row">
+        <span class="email">maruf.bagwan@gmail.com</span>
+        <button class="copy" type="button" data-copy="maruf.bagwan@gmail.com">Copy email</button>
+        <a href="https://www.linkedin.com/in/mohammed-maruf-bagwan" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <span>© 2026 Mohammed Maruf Bagwan · Dubai, UAE</span>
+    <a href="https://salesforce.marufbagwan.com/">salesforce.marufbagwan.com</a>
+  </footer>
+</div>
+
+<script src="assets/updates.js"></script>
+<script src="assets/site.js" data-root="" data-site="main"></script>
+<script>
+  (function () {
+    var list = document.getElementById("latest");
+    list.innerHTML = (window.UPDATES || []).slice(0, 3).map(function (u) {
+      var t = u.link ? '<a href="' + MB.esc(u.link) + '">' + MB.esc(u.title) + '</a>' : MB.esc(u.title);
+      return '<li><span class="date">' + MB.fmtDate(u.date) + '</span><div><h3>' + t + '</h3><p>' + MB.esc(u.text) +
+        '</p><div class="meta"><span class="tag">' + MB.esc(u.type) + '</span></div></div></li>';
+    }).join("");
+    MB.fixLinks(list);
+  })();
+</script>
+</body>
+</html>
