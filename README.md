@@ -4,7 +4,7 @@ One Git repo, one Cloudflare Worker (static assets), two domains.
 
 ```
 wrangler.jsonc                Cloudflare config (site folder, domains)
-src/index.js                  routes salesforce.marufbagwan.com -> public/salesforce/
+src/index.js                  router; salesforce.marufbagwan.com redirects to /salesforce/
 public/                       build output (what Cloudflare serves)
   index.html                  marufbagwan.com/
   about/  updates/            marufbagwan.com/about/, /updates/

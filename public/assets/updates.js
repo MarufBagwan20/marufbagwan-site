@@ -12,7 +12,7 @@ window.UPDATES = [
     date: "2026-09-28",
     type: "Site",
     title: "Launched the Salesforce hub",
-    text: "salesforce.marufbagwan.com is live with a practice quiz, a Winter '27 release tracker and a curated Salesforce news feed.",
+    text: "marufbagwan.com is live with a practice quiz, a Winter '27 release tracker and a curated Salesforce news feed.",
     link: "https://marufbagwan.com/salesforce/"
   },
   {
