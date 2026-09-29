@@ -5,7 +5,7 @@
     type:  "Career" | "Certification" | "Site" | "Writing"
     title: short headline
     text:  one or two sentences
-    link:  optional URL (use "https://salesforce.marufbagwan.com/..." for hub pages)
+    link:  optional URL (use "https://marufbagwan.com/..." for hub pages)
 */
 window.UPDATES = [
   {
@@ -13,7 +13,7 @@ window.UPDATES = [
     type: "Site",
     title: "Launched the Salesforce hub",
     text: "salesforce.marufbagwan.com is live with a practice quiz, a Winter '27 release tracker and a curated Salesforce news feed.",
-    link: "https://salesforce.marufbagwan.com/"
+    link: "https://marufbagwan.com/salesforce/"
   },
   {
     date: "2026-09-28",
