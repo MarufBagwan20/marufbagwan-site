@@ -9,15 +9,15 @@ public/                       build output (what Cloudflare serves)
   index.html                  marufbagwan.com/
   about/  updates/            marufbagwan.com/about/, /updates/
   assets/                     shared CSS/JS + updates.js (personal updates feed)
-  salesforce/                 salesforce.marufbagwan.com/
-    quiz/                     salesforce.marufbagwan.com/quiz/
-    news/                     salesforce.marufbagwan.com/news/
-    releases/                 salesforce.marufbagwan.com/releases/
+  salesforce/                 marufbagwan.com/salesforce
+    quiz/                     marufbagwan.com/salesforce/quiz/
+    news/                     marufbagwan.com/salesforce/news/
+    releases/                 marufbagwan.com/salesforcereleases/
     assets/                   hub CSS/JS + news.js, releases.js, quiz.js
 ```
 
 New hub section = new folder under `public/salesforce/` (e.g. `public/salesforce/cta/`
-serves at salesforce.marufbagwan.com/cta/). Add a tab for it in the `<ul class="tabs">` of each hub page.
+serves at marufbagwan.com/salesforce/cta/). Add a tab for it in the `<ul class="tabs">` of each hub page.
 
 ## Cloudflare (Worker with static assets, deployed from Git)
 - `wrangler.jsonc` tells Cloudflare the site is in `public/` and the router is `src/index.js`.
