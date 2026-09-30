@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Architecture · Maruf Bagwan</title>
+<meta name="description" content="Selected Salesforce architecture work and design principles from Mohammed Maruf Bagwan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site-header">
+    <a class="brand" href="/">Maruf Bagwan<span class="dot">.</span></a>
+    <nav aria-label="Main">
+      <ul class="tabs">
+        <li><a href="/">Home</a></li>
+        <li><a href="/architecture/" aria-current="page">Architecture</a></li>
+        <li><a href="/salesforce/">Salesforce Lab</a></li>
+        <li><a href="/about/">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-head">
+      <p class="eyebrow">Architecture</p>
+      <h1>How I think about enterprise Salesforce systems.</h1>
+      <p class="lede">These are anonymised examples of the kinds of architecture problems I work on. The emphasis is on decisions, trade-offs and operating behaviour rather than client-specific implementation details.</p>
+    </div>
+
+    <section class="architecture-case" id="salesforce-sap">
+      <div class="case-label"><span>01</span><p class="eyebrow">Enterprise integration</p></div>
+      <h2>Salesforce ↔ SAP order lifecycle</h2>
+      <p class="case-lede">A multi-system flow where Salesforce initiates business actions while SAP remains the system of record for downstream commercial processing.</p>
+      <div class="diagram" aria-label="Salesforce to SAP architecture diagram">
+        <div><b>Salesforce</b><small>UI · business context · orchestration trigger</small></div><span>→</span>
+        <div><b>Integration layer</b><small>routing · transformation · retry handling</small></div><span>→</span>
+        <div><b>SAP</b><small>pricing · order processing · master data</small></div>
+      </div>
+      <div class="decision-grid">
+        <div><h3>Design concern</h3><p>Multiple dependent calls can turn a single user action into a fragile chain if transaction boundaries are not explicit.</p></div>
+        <div><h3>Architecture choice</h3><p>Keep Salesforce focused on customer and process context while middleware owns cross-system routing and transformation.</p></div>
+        <div><h3>Failure strategy</h3><p>Use correlation IDs, retriable operations and visible error states so failures can be recovered without duplicate business transactions.</p></div>
+        <div><h3>What I watch</h3><p>Callout limits, response times, idempotency, partial success, data ownership and operational monitoring.</p></div>
+      </div>
+    </section>
+
+    <section class="architecture-case" id="omnichannel">
+      <div class="case-label"><span>02</span><p class="eyebrow">Service architecture</p></div>
+      <h2>Service Cloud &amp; Omni-Channel routing</h2>
+      <p class="case-lede">A support architecture where the challenge is not simply assigning work, but balancing capacity, priority, skills and customer context.</p>
+      <div class="diagram compact" aria-label="Omni-Channel architecture diagram">
+        <div><b>Customer channels</b><small>portal · chat · service requests</small></div><span>→</span>
+        <div><b>Routing &amp; automation</b><small>priority · skills · capacity</small></div><span>→</span>
+        <div><b>Service team</b><small>agent workspace · next action</small></div>
+      </div>
+      <div class="decision-grid">
+        <div><h3>Design concern</h3><p>Routing rules become hard to operate when business priority, agent availability and exception handling are mixed together.</p></div>
+        <div><h3>Architecture choice</h3><p>Separate assignment logic, service automation and agent experience so each can evolve independently.</p></div>
+        <div><h3>Operational focus</h3><p>Make queue behaviour and fallback paths observable rather than relying on hidden automation.</p></div>
+        <div><h3>What I watch</h3><p>Capacity models, re-routing, ownership changes, duplicate case creation and automation recursion.</p></div>
+      </div>
+    </section>
+
+    <section class="architecture-case" id="engineering">
+      <div class="case-label"><span>03</span><p class="eyebrow">Engineering architecture</p></div>
+      <h2>Reusable Apex delivery patterns</h2>
+      <p class="case-lede">A codebase scales better when developers do not have to reinvent trigger control, logging, async orchestration and configuration for every feature.</p>
+      <div class="diagram compact" aria-label="Application engineering layers diagram">
+        <div><b>Entry points</b><small>trigger · LWC · Flow · API</small></div><span>→</span>
+        <div><b>Domain &amp; services</b><small>business logic · orchestration</small></div><span>→</span>
+        <div><b>Platform services</b><small>logging · async · metadata</small></div>
+      </div>
+      <div class="decision-grid">
+        <div><h3>Design concern</h3><p>Feature-by-feature code often creates duplicated logic, inconsistent error handling and test fragility.</p></div>
+        <div><h3>Architecture choice</h3><p>Use clear layers and reusable platform utilities while resisting frameworks that add abstraction without reducing complexity.</p></div>
+        <div><h3>Quality strategy</h3><p>Make behaviour testable at service boundaries and use metadata for genuinely variable business configuration.</p></div>
+        <div><h3>What I watch</h3><p>Bulkification, transaction state, recursion, async limits, log usefulness and coupling between UI and domain logic.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><p class="eyebrow">Architecture principles</p></div>
+      <div class="principles">
+        <article><span>01</span><h3>Make failure recoverable</h3><p>Every distributed flow needs an answer for timeout, retry, duplication and partial success.</p></article>
+        <article><span>02</span><h3>Prefer explicit boundaries</h3><p>Know which system owns the data, which layer owns orchestration and where transformation belongs.</p></article>
+        <article><span>03</span><h3>Optimise for operations</h3><p>A design is incomplete if support teams cannot understand what happened when something fails.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <span>© 2026 Mohammed Maruf Bagwan · Dubai, UAE</span>
+    <a href="https://marufbagwan.com/">marufbagwan.com</a>
+  </footer>
+</div>
+<script src="../assets/site.js" data-root="../" data-site="main"></script>
+</body>
+</html>

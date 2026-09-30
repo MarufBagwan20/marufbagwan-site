@@ -29,3 +29,8 @@ serves at marufbagwan.com/salesforce/cta/). Add a tab for it in the `<ul class="
 ## Test before going live
 Each deploy is also reachable at `https://<name>.<account>.workers.dev`.
 There the hub is at `/salesforce/`, `/salesforce/quiz/` and so on.
+
+## Portfolio refresh
+- `public/architecture/` adds anonymised architecture case studies and design principles.
+- Main navigation now prioritises Architecture and Salesforce Lab.
+- Homepage emphasizes architecture evidence, operating principles and practical technical content.
