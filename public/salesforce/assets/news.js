@@ -1,7 +1,7 @@
 /*
   Salesforce news feed — newest first. Add new items at the top.
     date, tag, title, summary, source, url
-  Tags in use: Dreamforce, AI, Release, Security, Platform, Pricing, Company, Acquisition
+  Tags in use: Dreamforce, AI, Security, Platform, Pricing, Company, Acquisition
 */
 window.NEWS_UPDATED = "2026-09-28";
 window.NEWS = [
@@ -18,13 +18,6 @@ window.NEWS = [
     summary: "Roundup of the event: AIforce, Claudeforce, Slackforce Surfaces, Agentforce Coworker, the Koa reasoning model, the Trusted Enterprise AI Harness and seven named job-ready agents.",
     source: "Salesforce Ben",
     url: "https://www.salesforceben.com/biggest-dreamforce-26-announcements-everything-in-a-nutshell/"
-  },
-  {
-    date: "2026-09-24", tag: "Release",
-    title: "Flow Tags pulled from Winter '27",
-    summary: "Salesforce removed Flow Tags from the Winter '27 release notes, saying the feature isn't ready yet. No new date has been given.",
-    source: "Salesforce Ben",
-    url: "https://www.salesforceben.com/salesforce-removes-flow-tags-from-winter-27-release/"
   },
   {
     date: "2026-09-24", tag: "Pricing",

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Salesforce Hub · Maruf Bagwan</title>
-<meta name="description" content="Salesforce practice quiz, release highlights and news, curated by Maruf Bagwan.">
+<title>Salesforce Lab · Maruf Bagwan</title>
+<meta name="description" content="Salesforce practice, curated seasonal release highlights and focused platform updates by Maruf Bagwan.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -16,10 +16,10 @@
     <a class="brand" href="https://marufbagwan.com/">Maruf Bagwan<span class="dot">.</span> <span class="sub">salesforce</span></a>
     <nav aria-label="Salesforce hub">
       <ul class="tabs">
-        <li><a href="https://marufbagwan.com/salesforce/" aria-current="page">Hub</a></li>
+        <li><a href="https://marufbagwan.com/salesforce/" aria-current="page">Lab home</a></li>
         <li><a href="https://marufbagwan.com/salesforce/quiz/">Quiz</a></li>
-        <li><a href="https://marufbagwan.com/salesforce/releases/">Releases</a></li>
-        <li><a href="https://marufbagwan.com/salesforce/news/">News</a></li>
+        <li><a href="https://marufbagwan.com/salesforce/releases/">Release highlights</a></li>
+        <li><a href="https://marufbagwan.com/salesforce/news/">Platform updates</a></li>
         <li><a class="out" href="https://marufbagwan.com/">Main site</a></li>
       </ul>
     </nav>
@@ -27,42 +27,52 @@
 
   <main>
     <div class="page-head">
-      <p class="eyebrow">salesforce.marufbagwan.com</p>
-      <h1>A practical Salesforce lab for architects and developers.</h1>
-      <p class="lede">Test your platform knowledge, track the changes that matter and build sharper architecture instincts through practical Salesforce content.</p>
+      <div class="sf-hero-grid">
+        <div>
+          <p class="eyebrow">Salesforce Lab</p>
+          <h1>Learn the platform. Track what matters. Skip the noise.</h1>
+          <p class="lede">A focused workspace for Salesforce architects and developers: practice core concepts, review the seasonal release changes worth knowing, and follow broader platform developments without mixing the three together.</p>
+        </div>
+        <aside class="sf-signal">
+          <p class="eyebrow">What belongs where</p>
+          <div class="signal-row"><span>Practice</span><b>Quiz &amp; concepts</b></div>
+          <div class="signal-row"><span>Release highlights</span><b>Official seasonal changes</b></div>
+          <div class="signal-row"><span>Platform updates</span><b>AI, products &amp; ecosystem</b></div>
+        </aside>
+      </div>
     </div>
 
     <section>
       <div class="cards">
-        <a class="card" href="https://marufbagwan.com/salesforce/quiz/">
-          <span class="k">/quiz</span>
+        <a class="card accent-card" href="https://marufbagwan.com/salesforce/quiz/">
+          <span class="k">01 · Learn</span>
           <h3>Practice quiz</h3>
           <p id="quizBlurb">Questions on Apex, LWC, integration, security, architecture and OmniStudio.</p>
-          <span class="go">Start quiz →</span>
+          <span class="go">Start practicing →</span>
         </a>
         <a class="card" href="https://marufbagwan.com/salesforce/releases/">
-          <span class="k">/releases</span>
-          <h3>Release notes</h3>
-          <p>The Winter '27 features worth knowing, with key dates and filters by area.</p>
-          <span class="go">See highlights →</span>
+          <span class="k">02 · Seasonal release</span>
+          <h3>Release highlights</h3>
+          <p>Only the Salesforce seasonal changes that are worth reviewing, grouped by area with official sources.</p>
+          <span class="go">Review the release →</span>
         </a>
         <a class="card" href="https://marufbagwan.com/salesforce/news/">
-          <span class="k">/news</span>
-          <h3>Latest news</h3>
-          <p>Product, AI and platform news from across the Salesforce ecosystem.</p>
-          <span class="go">Read news →</span>
+          <span class="k">03 · Ecosystem</span>
+          <h3>Platform updates</h3>
+          <p>Broader Salesforce product, AI, security and company developments. Release-note items stay out of this feed.</p>
+          <span class="go">Browse updates →</span>
         </a>
       </div>
     </section>
 
     <section>
-      <div class="sec-head"><p class="eyebrow" id="relTitle">Release at a glance</p><a href="https://marufbagwan.com/salesforce/releases/">All highlights →</a></div>
+      <div class="sec-head"><p class="eyebrow" id="relTitle">Current release</p><a href="https://marufbagwan.com/salesforce/releases/">Full release highlights →</a></div>
       <ol class="dates" id="dates"></ol>
       <ul class="rel" id="picks" style="margin-top:18px"></ul>
     </section>
 
     <section>
-      <div class="sec-head"><p class="eyebrow">Latest news</p><a href="https://marufbagwan.com/salesforce/news/">All news →</a></div>
+      <div class="sec-head"><p class="eyebrow">Recent platform updates</p><a href="https://marufbagwan.com/salesforce/news/">All platform updates →</a></div>
       <ul class="feed" id="news"></ul>
     </section>
   </main>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Release Notes · Salesforce Hub</title>
-<meta name="description" content="Salesforce release highlights and key dates, filterable by area.">
+<title>Salesforce Release Highlights · Maruf Bagwan</title>
+<meta name="description" content="Curated Salesforce seasonal release highlights, key dates and official sources.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -16,10 +16,10 @@
     <a class="brand" href="https://marufbagwan.com/salesforce">Maruf Bagwan<span class="dot">.</span> <span class="sub">salesforce</span></a>
     <nav aria-label="Salesforce hub">
       <ul class="tabs">
-        <li><a href="https://marufbagwan.com/salesforce">Hub</a></li>
+        <li><a href="https://marufbagwan.com/salesforce">Lab home</a></li>
         <li><a href="https://marufbagwan.com/salesforce/quiz/">Quiz</a></li>
-        <li><a href="https://marufbagwan.com/salesforce/releases/" aria-current="page">Releases</a></li>
-        <li><a href="https://marufbagwan.com/salesforce/news/">News</a></li>
+        <li><a href="https://marufbagwan.com/salesforce/releases/" aria-current="page">Release highlights</a></li>
+        <li><a href="https://marufbagwan.com/salesforce/news/">Platform updates</a></li>
         <li><a class="out" href="https://marufbagwan.com/">Main site</a></li>
       </ul>
     </nav>
@@ -27,9 +27,9 @@
 
   <main>
     <div class="page-head">
-      <p class="eyebrow">Release notes</p>
+      <p class="eyebrow">Seasonal release</p>
       <h1 id="relName">Release highlights</h1>
-      <p class="lede">The features I think are worth knowing about, grouped by area. For full detail, check the <a id="notesLink" href="#" target="_blank" rel="noopener">official release notes ↗</a>.</p>
+      <p class="lede">A curated view of the changes most relevant to architects, developers and admins. This is not a replacement for Salesforce documentation—each release links back to the <a id="notesLink" href="#" target="_blank" rel="noopener">official release notes ↗</a>.</p>
     </div>
 
     <section>
@@ -43,7 +43,6 @@
         <div class="chips" id="areas" role="group" aria-label="Filter by area"></div>
         <input class="search" id="q" type="search" placeholder="Search features" aria-label="Search features">
       </div>
-      <div class="chips" id="statuses" role="group" aria-label="Filter by status" style="margin:-12px 0 22px"></div>
       <ul class="rel" id="list"></ul>
     </section>
 
@@ -73,32 +72,23 @@
   }).join("");
 
   var areas = ["All"].concat(rel.features.map(function (f) { return f.area; }).filter(function (t, i, a) { return a.indexOf(t) === i; }));
-  var statuses = ["Any status"].concat(["GA", "Beta", "Developer Preview", "Release Update", "New", "Removed"].filter(function (s) {
-    return rel.features.some(function (f) { return f.status === s; });
-  }));
-  var st = { area: "All", status: "Any status", q: "" };
-  var areaEl = document.getElementById("areas"), statusEl = document.getElementById("statuses"),
-      list = document.getElementById("list"), count = document.getElementById("count");
+  var st = { area: "All", q: "" };
+  var areaEl = document.getElementById("areas"), list = document.getElementById("list"), count = document.getElementById("count");
 
   function render() {
     areaEl.innerHTML = areas.map(function (a) {
       var n = a === "All" ? rel.features.length : rel.features.filter(function (f) { return f.area === a; }).length;
       return '<button class="chip" type="button" data-a="' + esc(a) + '" aria-pressed="' + (a === st.area) + '">' + esc(a) + '<span class="n">' + n + '</span></button>';
     }).join("");
-    statusEl.innerHTML = statuses.map(function (s) {
-      return '<button class="chip" type="button" data-s="' + esc(s) + '" aria-pressed="' + (s === st.status) + '">' + esc(s) + '</button>';
-    }).join("");
     var q = st.q.toLowerCase();
     var items = rel.features.filter(function (f) {
       return (st.area === "All" || f.area === st.area) &&
-             (st.status === "Any status" || f.status === st.status) &&
              (!q || (f.title + " " + f.text + " " + f.area).toLowerCase().indexOf(q) > -1);
     });
     count.textContent = items.length + " of " + rel.features.length;
     list.innerHTML = items.length ? items.map(HUB.featureRow).join("") : '<li><p class="empty">No features match. Try another filter.</p></li>';
   }
   areaEl.addEventListener("click", function (e) { var b = e.target.closest("[data-a]"); if (b) { st.area = b.dataset.a; render(); } });
-  statusEl.addEventListener("click", function (e) { var b = e.target.closest("[data-s]"); if (b) { st.status = b.dataset.s; render(); } });
   document.getElementById("q").addEventListener("input", function (e) { st.q = e.target.value.trim(); render(); });
   render();
 })();

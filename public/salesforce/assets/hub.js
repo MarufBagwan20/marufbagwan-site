@@ -22,8 +22,8 @@ window.HUB = (function () {
       }).join("");
     },
     featureRow: function (f) {
-      return '<li><h3>' + esc(f.title) + '</h3><span class="st ' + (STATUS[f.status] || "st-new") + '">' + esc(f.status) +
-        '</span><p>' + esc(f.text) + '</p><span class="area">' + esc(f.area) + '</span></li>';
+      var badge = f.status === "New" ? "" : '<span class="st ' + (STATUS[f.status] || "st-new") + '">' + esc(f.status) + '</span>';
+      return '<li><h3>' + esc(f.title) + '</h3>' + badge + '<p>' + esc(f.text) + '</p><span class="area">' + esc(f.area) + '</span></li>';
     },
     newsRow: function (n) {
       return '<li><span class="date">' + MB.fmtDate(n.date) + '</span><div><h3><a href="' + esc(n.url) +

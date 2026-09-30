@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Salesforce News · Maruf Bagwan</title>
-<meta name="description" content="Curated Salesforce news: product, AI, releases and platform.">
+<title>Salesforce Platform Updates · Maruf Bagwan</title>
+<meta name="description" content="Curated Salesforce platform updates covering products, AI, security and ecosystem developments.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -16,10 +16,10 @@
     <a class="brand" href="https://marufbagwan.com/">Maruf Bagwan<span class="dot">.</span> <span class="sub">salesforce</span></a>
     <nav aria-label="Salesforce hub">
       <ul class="tabs">
-        <li><a href="https://marufbagwan.com/salesforce">Hub</a></li>
+        <li><a href="https://marufbagwan.com/salesforce">Lab home</a></li>
         <li><a href="https://marufbagwan.com/salesforce/quiz/">Quiz</a></li>
-        <li><a href="https://marufbagwan.com/salesforce/releases/">Releases</a></li>
-        <li><a href="https://marufbagwan.com/salesforce/news/" aria-current="page">News</a></li>
+        <li><a href="https://marufbagwan.com/salesforce/releases/">Release highlights</a></li>
+        <li><a href="https://marufbagwan.com/salesforce/news/" aria-current="page">Platform updates</a></li>
         <li><a class="out" href="https://marufbagwan.com/">Main site</a></li>
       </ul>
     </nav>
@@ -27,15 +27,15 @@
 
   <main>
     <div class="page-head">
-      <p class="eyebrow">News</p>
-      <h1>Salesforce news</h1>
-      <p class="lede">Hand-picked stories on products, AI, releases and the platform. <span id="updated"></span></p>
+      <p class="eyebrow">Ecosystem</p>
+      <h1>Platform updates</h1>
+      <p class="lede">Broader Salesforce developments across products, AI, security and the company. Seasonal release changes live separately in <a href="https://marufbagwan.com/salesforce/releases/">Release Highlights</a>. <span id="updated"></span></p>
     </div>
 
     <section>
       <div class="toolbar">
         <div class="chips" id="tags" role="group" aria-label="Filter by topic"></div>
-        <input class="search" id="q" type="search" placeholder="Search news" aria-label="Search news">
+        <input class="search" id="q" type="search" placeholder="Search platform updates" aria-label="Search platform updates">
       </div>
       <ul class="feed" id="feed"></ul>
     </section>
@@ -66,7 +66,7 @@
     var items = data.filter(function (n) {
       return (st.tag === "All" || n.tag === st.tag) && (!q || (n.title + " " + n.summary).toLowerCase().indexOf(q) > -1);
     });
-    feed.innerHTML = items.length ? items.map(HUB.newsRow).join("") : '<li><p class="empty">No stories match. Try another filter.</p></li>';
+    feed.innerHTML = items.length ? items.map(HUB.newsRow).join("") : '<li><p class="empty">No updates match. Try another filter.</p></li>';
   }
   tagEl.addEventListener("click", function (e) { var b = e.target.closest("[data-t]"); if (b) { st.tag = b.dataset.t; render(); } });
   document.getElementById("q").addEventListener("input", function (e) { st.q = e.target.value.trim(); render(); });

@@ -3,7 +3,7 @@
 
   Links in the HTML are written for production:
     main site      ->  "/about/", "/updates/"
-    salesforce hub ->  "https://marufbagwan.com/quiz/"
+    salesforce hub ->  "https://marufbagwan.com/salesforce/"
   When the pages are opened anywhere else (a local folder or a preview host),
   those links are rewritten to relative file paths so the whole site can be
   browsed from one folder. On the real domains nothing is changed.
